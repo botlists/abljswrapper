@@ -5,15 +5,21 @@
 ```js
 const Botlists = require('abl.js');
 
-const abl = new Botlists('1234');
+const abl = new Botlists('api-key', 'bot id');
 
 /* get your bot stats */
 
-abl.stats().then((r) => console.log(r.message)).catch((r) => console.log(r));
+abl
+    .stats()
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 
 /* post your bot stats */
 
-abl.postStats(10, 2).then((r) => console.log(r)).catch((r) => console.log(r));
+abl
+    .postStats(20, 0, 'online')
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 
 
 /*
@@ -27,7 +33,7 @@ abl.postStats(10, 2).then((r) => console.log(r)).catch((r) => console.log(r));
 ```js
     const Botlists = require('abl.js');
     
-    const abl = new Botlists('api key');
+    const abl = new Botlists('api key', 'bot id');
     (async () => {
       try {
         const botStats = await abl.stats();
@@ -37,7 +43,7 @@ abl.postStats(10, 2).then((r) => console.log(r)).catch((r) => console.log(r));
       }
     
       try {
-        const postStats = await abl.postStats(10, 2);
+        const postStats = await abl.postStats(20, 0, 'online');
         console.log(postStats, 'here');
       } catch (e) {
         console.log(e);
